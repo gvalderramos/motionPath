@@ -26,13 +26,11 @@ set(SOURCE_FILES
     "MotionPathEditContextMenuWidget.cpp"
     "../include/MotionPathEditContextMenuWidget.h"
     "MotionPathEditContextMenuWidgetMoc.cpp"
-    "../include/MotionPathEditContextMenuWidgetMoc.h"
     "MotionPathManager.cpp"
     "../include/MotionPathManager.h"
     "MotionPathOverride.cpp"
     "../include/MotionPathOverride.h"
     "PluginMain.cpp"
-    "../include/PluginMain.h"
     "Vp2DrawUtils.cpp"
     "../include/Vp2DrawUtils.h"
 )
