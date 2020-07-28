@@ -36,11 +36,15 @@ set(SOURCE_FILES
 )
 
 find_package(Maya REQUIRED)
+find_package(Qt5 REQUIRED)
 
 include_directories(${MAYA_INCLUDE_DIR})
 link_directories(${MAYA_LIBRARY_DIR})
 
+include_directories(${QT_INCLUDES})
+link_directories(${QT_LIBRARIES})
+
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
-target_link_libraries(${PROJECT_NAME} ${MAYA_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${MAYA_LIBRARIES} ${QT_LIBRARIES})
 
 MAYA_PLUGIN(${PROJECT_NAME})
