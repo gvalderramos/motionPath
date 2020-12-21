@@ -37,10 +37,10 @@ set(INCLUDE_FILES
     ${INCLUDE_DIR}/MotionPathOverride.h
     ${INCLUDE_DIR}/Vp2DrawUtils.h
 )
-# find_package(Maya REQUIRED)
+find_package(Maya REQUIRED)
 
-# include_directories(${MAYA_INCLUDE_DIR})
-# link_directories(${MAYA_LIBRARY_DIR})
+include_directories(${MAYA_INCLUDE_DIR})
+link_directories(${MAYA_LIBRARY_DIR})
 
 add_library(tcMotionPath SHARED ${SOURCE_FILES} ${INCLUDE_FILES})
 target_link_libraries(tcMotionPath 
@@ -49,4 +49,4 @@ target_link_libraries(tcMotionPath
     Qt5::Widgets
 )
 
-# MAYA_PLUGIN(${PROJECT_NAME})
+MAYA_PLUGIN(${PROJECT_NAME})
