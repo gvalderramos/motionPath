@@ -1,50 +1,52 @@
 set(SOURCE_FILES
-    "animCurveUtils.cpp"
-    "../include/animCurveUtils.h"
-    "BufferPath.cpp"
-    "../include/BufferPath.h"
-    "CameraCache.cpp"
-    "../include/CameraCache.h"
-    "ContextUtils.cpp"
-    "../include/ContextUtils.h"
-    "DrawUtils.cpp"
-    "../include/DrawUtils.h"
-    "GlobalSettings.cpp"
-    "../include/GlobalSettings.h"
-    "KeyClipboard.cpp"
-    "../include/KeyClipboard.h"
-    "Keyframe.cpp"
-    "../include/Keyframe.h"
-    "MotionPath.cpp"
-    "../include/MotionPath.h"
-    "MotionPathCmd.cpp"
-    "../include/MotionPathCmd.h"
-    "MotionPathDrawContext.cpp"
-    "../include/MotionPathDrawContext.h"
-    "MotionPathEditContext.cpp"
-    "../include/MotionPathEditContext.h"
-    "MotionPathEditContextMenuWidget.cpp"
-    "../include/MotionPathEditContextMenuWidget.h"
-    "MotionPathEditContextMenuWidgetMoc.cpp"
-    "MotionPathManager.cpp"
-    "../include/MotionPathManager.h"
-    "MotionPathOverride.cpp"
-    "../include/MotionPathOverride.h"
-    "PluginMain.cpp"
-    "Vp2DrawUtils.cpp"
-    "../include/Vp2DrawUtils.h"
+    animCurveUtils.cpp
+    BufferPath.cpp
+    CameraCache.cpp
+    ContextUtils.cpp
+    DrawUtils.cpp
+    GlobalSettings.cpp
+    KeyClipboard.cpp
+    Keyframe.cpp
+    MotionPath.cpp
+    MotionPathCmd.cpp
+    MotionPathDrawContext.cpp
+    MotionPathEditContext.cpp
+    MotionPathEditContextMenuWidget.cpp
+    MotionPathEditContextMenuWidgetMoc.cpp
+    MotionPathManager.cpp
+    MotionPathOverride.cpp
+    PluginMain.cpp
+    Vp2DrawUtils.cpp
+)
+set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
+set(INCLUDE_FILES
+    ${INCLUDE_DIR}/animCurveUtils.h
+    ${INCLUDE_DIR}/BufferPath.h
+    ${INCLUDE_DIR}/CameraCache.h
+    ${INCLUDE_DIR}/ContextUtils.h
+    ${INCLUDE_DIR}/DrawUtils.h
+    ${INCLUDE_DIR}/GlobalSettings.h
+    ${INCLUDE_DIR}/KeyClipboard.h
+    ${INCLUDE_DIR}/Keyframe.h
+    ${INCLUDE_DIR}/MotionPath.h
+    ${INCLUDE_DIR}/MotionPathCmd.h
+    ${INCLUDE_DIR}/MotionPathDrawContext.h
+    ${INCLUDE_DIR}/MotionPathEditContext.h
+    ${INCLUDE_DIR}/MotionPathEditContextMenuWidget.h
+    ${INCLUDE_DIR}/MotionPathManager.h
+    ${INCLUDE_DIR}/MotionPathOverride.h
+    ${INCLUDE_DIR}/Vp2DrawUtils.h
+)
+# find_package(Maya REQUIRED)
+
+# include_directories(${MAYA_INCLUDE_DIR})
+# link_directories(${MAYA_LIBRARY_DIR})
+
+add_library(tcMotionPath SHARED ${SOURCE_FILES} ${INCLUDE_FILES})
+target_link_libraries(tcMotionPath 
+    ${MAYA_LIBRARIES} 
+    Qt5::Core
+    Qt5::Widgets
 )
 
-find_package(Maya REQUIRED)
-find_package(Qt5 REQUIRED)
-
-include_directories(${MAYA_INCLUDE_DIR})
-link_directories(${MAYA_LIBRARY_DIR})
-
-include_directories(${QT_INCLUDES})
-link_directories(${QT_LIBRARIES})
-
-add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
-target_link_libraries(${PROJECT_NAME} ${MAYA_LIBRARIES} ${QT_LIBRARIES})
-
-MAYA_PLUGIN(${PROJECT_NAME})
+# MAYA_PLUGIN(${PROJECT_NAME})
